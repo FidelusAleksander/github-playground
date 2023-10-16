@@ -4,13 +4,25 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
+      - secrets-in-if-statements
 
 jobs:
-  test:
+  test-secret:
     runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run script
+
+        run: |
+          echo ${{ secrets.MY_SECRET }}
+
+  test-var:
+    if: vars.MY_VAR == 'something'
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
       - name: Run script
         run: |
-          echo "test self-hosted runner"
+          echo ${{ vars.MY_VAR }}
