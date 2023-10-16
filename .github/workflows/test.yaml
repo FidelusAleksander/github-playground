@@ -7,10 +7,20 @@ on:
       - master
 
 jobs:
-  test:
+  test-secret:
     runs-on: self-hosted
+    if: ${{ secrets.MY_SECRET }}
     steps:
       - uses: actions/checkout@v4
       - name: Run script
         run: |
-          echo "test self-hosted runner"
+          echo ${{ secrets.MY_SECRET }}
+
+  test-var:
+    runs-on: self-hosted
+    if: ${{ vars.MY_VAR }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run script
+        run: |
+          echo ${{ vars.MY_VAR }}
