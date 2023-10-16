@@ -4,15 +4,16 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
+      - secrets-in-if-statements
 
 jobs:
   test-secret:
     runs-on: self-hosted
-    if: ${{ secrets.MY_SECRET }}
+
     steps:
       - uses: actions/checkout@v4
       - name: Run script
+        if: ${{ secrets.MY_SECRET }}
         run: |
           echo ${{ secrets.MY_SECRET }}
 
