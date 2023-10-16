@@ -19,7 +19,7 @@ jobs:
 
   test-var:
     runs-on: ubuntu-latest
-    if: ${{ vars.MY_VAR  }} == "something"
+    if: ${{ vars.MY_VAR == 'something' }}
     steps:
       - uses: actions/checkout@v4
       - name: Run script
