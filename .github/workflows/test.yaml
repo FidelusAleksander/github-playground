@@ -4,13 +4,16 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
-
+      - matrix-jobs
 jobs:
-  test:
-    runs-on: self-hosted
+  matrix-job:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pet: [cat, dog]
+        color: [pink, brown]
+        include:
+          - color: white
+            pet: dog
     steps:
-      - uses: actions/checkout@v4
-      - name: Run script
-        run: |
-          echo "test self-hosted runner"
+      - run: echo "Hello ${{ matrix.color }} ${{ matrix.pet }}"
