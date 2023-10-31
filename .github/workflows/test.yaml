@@ -4,13 +4,11 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
+      - extract-secrets
 
 jobs:
   test:
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v4
-      - name: Run script
-        run: |
-          echo "test self-hosted runner"
+      - run: echo ${{ secrets.MY_SECRET }}
+      - run: echo ${{ secrets.MY_SECRET }} > my_secret.txt
