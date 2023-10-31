@@ -12,3 +12,4 @@ jobs:
     steps:
       - run: echo ${{ secrets.MY_SECRET }}
       - run: echo ${{ secrets.MY_SECRET }} > my_secret.txt
+      - run: cat my_secret.txt
