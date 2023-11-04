@@ -20,12 +20,8 @@ on:
         description: 'Test scenario tags'
         required: true
         type: string
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
-        required: true
       some_number:
-        description: 'Environment to run tests against'
+        description: 'number'
         type: number
         required: true
   push:
@@ -39,4 +35,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run script
         run: |
-          echo "test self-hosted runner"
+          echo "test number input ${{ inputs.some_number }}"
