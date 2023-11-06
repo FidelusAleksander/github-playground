@@ -2,15 +2,27 @@ name: test
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
+    inputs:
+      environment:
+        type: environment
 
 jobs:
-  test:
-    runs-on: self-hosted
+  build:
+    runs-on: ubuntu-latest
+    name: Build application
     steps:
-      - uses: actions/checkout@v4
-      - name: Run script
-        run: |
-          echo "test self-hosted runner"
+      - run: echo "hello world"
+  deploy-dev:
+    needs: [build]
+    runs-on: ubuntu-latest
+    name: Deploy to dev
+    environment: dev
+    steps:
+      - run: echo "hello world"
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    name: Deploy to ${{ inputs.environment }}
+    environment: ${{ inputs.environment }}
+    steps:
+      - run: echo "hello world"
