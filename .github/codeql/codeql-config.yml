@@ -1,7 +1,10 @@
 name: "CodeQL config"
 queries: 
-  - uses: security-extended
-  - uses: security-and-quality
+  javascript:
+    - uses: security-extended
+    - uses: security-and-quality
+  python:
+    - uses: security-extended
 paths-ignore:
   - tests
   - lib
