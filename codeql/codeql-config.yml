@@ -1,11 +1,10 @@
 name: "CodeQL config"
 queries: 
-  - uses: security-extended
-  - uses: security-and-quality
   - uses: ./queries
 paths-ignore:
   - tests
   - lib
+disable-default-queries: true
 # query-filters:
 #  - exclude:
 #      id: js/code-injection
