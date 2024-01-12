@@ -5,6 +5,6 @@ queries:
 paths-ignore:
   - tests
   - lib
-query-filters:
- - exclude:
-     id: js/code-injection
+#query-filters:
+# - exclude:
+#     id: js/code-injection
