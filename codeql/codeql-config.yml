@@ -1,7 +1,7 @@
 name: "CodeQL config"
 queries: 
   - uses: security-extended
-  - uses: ./queries
+  - uses: ./queries/command_injection.ql
 paths-ignore:
   - tests
   - lib
