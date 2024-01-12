@@ -1,5 +1,6 @@
 name: "CodeQL config"
 queries: 
+  - uses: security-extended
   - uses: ./queries
 paths-ignore:
   - tests
