@@ -4,6 +4,8 @@ on:
   issues:
     labels: [aws-integration-request]
 
+permissions: write-all
+
 jobs:
   process:
     name: Process AWS Integration Request
