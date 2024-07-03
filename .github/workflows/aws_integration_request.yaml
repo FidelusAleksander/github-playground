@@ -4,14 +4,15 @@ on:
   issues:
     labels: [aws-integration-request]
 
-permissions:
-  pull-requests: write
-  contents: read
+
 
 jobs:
   process:
     name: Process AWS Integration Request
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
