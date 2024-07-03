@@ -4,8 +4,6 @@ on:
   issues:
     labels: [aws-integration-request]
 
-
-
 jobs:
   process:
     name: Process AWS Integration Request
@@ -35,3 +33,4 @@ jobs:
           title: "Add requested AWS Integration"
           labels: aws-integration-request
           add-paths: infra/config.json
+          branch: aws-integration-request-${{ github.event.issue.number }}
