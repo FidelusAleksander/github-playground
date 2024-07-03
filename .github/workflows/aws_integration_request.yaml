@@ -24,6 +24,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Update configuration file with new AWS account ID"
           title: "Add requested AWS Integration"
           labels: aws-integration-request
