@@ -19,7 +19,7 @@ jobs:
           echo "Output data: ${{ steps.parse-issue.outputs.data }}"
           AWS_ACCOUNT_ID=$(echo '${{ steps.parse-issue.outputs.data }}' | jq -r '.["aws-account-id"].text')
 
-          echo "AWS account ID env: $AWS_ACCOUNT_ID"
+          echo "AWS account ID first: $AWS_ACCOUNT_ID"
 
           AWS_ACCOUNT_ID_2=$(echo '$NEW_ACCOUNT_ID' | jq -r '.["aws-account-id"].text')
 
