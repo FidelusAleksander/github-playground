@@ -19,5 +19,5 @@ jobs:
           AWS_ACCOUNT_ID=$(echo '${{ steps.parse-issue.outputs.data }}' | jq -r '.["aws-account-id"].text')
           echo "New account ID env: $AWS_ACCOUNT_ID"
           cd infra
-          jq --arg id "AWS_ACCOUNT_ID" '.account_ids += [$id]' config.json > temp.json && mv temp.json config.json
+          jq --arg id "$AWS_ACCOUNT_ID" '.account_ids += [$id]' config.json > temp.json && mv temp.json config.json
           cat config.json
