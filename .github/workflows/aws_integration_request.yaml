@@ -14,9 +14,18 @@ jobs:
       - name: Issue Forms Body Parser
         id: parse-issue
         uses: zentered/issue-forms-body-parser@v2.2.0
-      - run: |
+      - name: Update configuration file
+        run: |
+          echo "Output data: ${{ steps.parse-issue.outputs.data }}"
+          AWS_ACCOUNT_ID=$(echo '${{ steps.parse-issue.outputs.data }}' | jq -r '.["aws-account-id"].text')
+
+          echo "AWS account ID env: $AWS_ACCOUNT_ID"
+
+          AWS_ACCOUNT_ID_2=$(echo '$NEW_ACCOUNT_ID' | jq -r '.["aws-account-id"].text')
+
+          echo "New account ID env: $AWS_ACCOUNT_ID_2"
           cd infra
-          jq --arg id "$NEW_ACCOUNT_ID" '.account_ids += [$id]' config.json > temp.json && mv temp.json config.json
+          jq --arg id "AWS_ACCOUNT_ID" '.account_ids += [$id]' config.json > temp.json && mv temp.json config.json
           cat config.json
         env:
           NEW_ACCOUNT_ID: ${{ steps.parse-issue.outputs.data.aws-account-id }}
