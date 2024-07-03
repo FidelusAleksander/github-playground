@@ -11,4 +11,9 @@ jobs:
       - name: Issue Forms Body Parser
         id: parse-issue
         uses: zentered/issue-forms-body-parser@v2.2.0
-      - run: echo ${{ toJSON(steps.parse-issue.outputs.data) }}
+      - run: |
+          cd infra
+          jq --arg id "$NEW_ACCOUNT_ID" '.account_id_list += [$id]' config.json > temp.json && mv temp.json config.json
+          cat config.json
+        env:
+          NEW_ACCOUNT_ID: ${{ steps.parse-issue.outputs.data.aws-account-id }}
