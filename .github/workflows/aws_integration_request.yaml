@@ -1,4 +1,4 @@
-name: Issue Forms Body Parser
+name: AWS Integration Request
 
 on:
   issues:
@@ -6,6 +6,7 @@ on:
 
 jobs:
   process:
+    name: Process AWS Integration Request
     runs-on: ubuntu-latest
     steps:
       - name: Issue Forms Body Parser
@@ -13,7 +14,7 @@ jobs:
         uses: zentered/issue-forms-body-parser@v2.2.0
       - run: |
           cd infra
-          jq --arg id "$NEW_ACCOUNT_ID" '.account_id_list += [$id]' config.json > temp.json && mv temp.json config.json
+          jq --arg id "$NEW_ACCOUNT_ID" '.account_ids += [$id]' config.json > temp.json && mv temp.json config.json
           cat config.json
         env:
           NEW_ACCOUNT_ID: ${{ steps.parse-issue.outputs.data.aws-account-id }}
