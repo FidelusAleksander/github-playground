@@ -4,7 +4,9 @@ on:
   issues:
     labels: [aws-integration-request]
 
-permissions: write-all
+permissions:
+  pull-requests: write
+  contents: read
 
 jobs:
   process:
@@ -28,6 +30,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Update configuration file with new AWS account ID"
+          body: "This PR updates the configuration file with the new AWS account ID provided in the issue #${{ github.event.issue.number }}."
           title: "Add requested AWS Integration"
           labels: aws-integration-request
           add-paths: infra/config.json
