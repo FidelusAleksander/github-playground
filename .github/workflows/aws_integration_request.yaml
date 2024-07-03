@@ -1,0 +1,14 @@
+name: Issue Forms Body Parser
+
+on:
+  issues:
+    labels: [aws-integration-request]
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Issue Forms Body Parser
+        id: parse-issue
+        uses: zentered/issue-forms-body-parser@v2.2.0
+      - run: echo ${{ toJSON(steps.parse.outputs.data) }}
