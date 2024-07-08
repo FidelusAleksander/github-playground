@@ -2,10 +2,13 @@ name: AWS Integration Request
 
 on:
   issues:
-    labels: [aws-integration-request]
+    types:
+      - opened
+      - edited
 
 jobs:
   process:
+    if: contains(github.event.issue.labels.*.name, 'aws-integration-request')
     name: Process AWS Integration Request
     runs-on: ubuntu-latest
     permissions:
@@ -30,7 +33,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Update configuration file with new AWS account ID"
           body: "This PR updates the configuration file with the new AWS account ID provided in the issue #${{ github.event.issue.number }}."
-          title: "Add AWS Integration requested in Issue#${{ github.event.issue.number }}"
+          title: "Add AWS Integration"
           labels: aws-integration-request
           add-paths: infra/config.json
           branch: aws-integration-request-${{ github.event.issue.number }}
