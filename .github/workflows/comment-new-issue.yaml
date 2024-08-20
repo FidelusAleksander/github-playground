@@ -1,8 +1,7 @@
 name: Add comment to new issue
 on:
   issues:
-    types:
-      - opened
+
 jobs:
   add-comment:
     runs-on: ubuntu-latest
@@ -10,7 +9,7 @@ jobs:
       issues: write
     steps:
       - name: Add comment
-        run: gh issue comment "$NUMBER" --body "$BODY"
+        run: gh issue comment "$NUMBER" --body '$BODY'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
