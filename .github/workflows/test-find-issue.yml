@@ -4,6 +4,10 @@ name: test find issue
 on:
   workflow_dispatch:
 
+permissions:
+  issues: read
+  contents: read
+
 jobs:
   find_exercise:
     name: Find Exercise Issue
