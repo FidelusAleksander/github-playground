@@ -1,0 +1,17 @@
+name: test find issue
+
+
+on:
+  workflow_dispatch:
+
+jobs:
+  find_exercise:
+    name: Find Exercise Issue
+    uses: skills/exercise-toolkit/.github/workflows/find-exercise-issue.yml@main
+
+  print_outputs:
+    needs: find_exercise
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ needs.find_exercise.outputs.issue-url }}
+      - run: echo ${{ needs.find_exercise.outputs.issue-number }}
