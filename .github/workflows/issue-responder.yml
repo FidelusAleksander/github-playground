@@ -22,7 +22,7 @@ jobs:
         uses: ./
         with:
           prompt: |
-            Respond to this GitHub issue. Your response should be ready to post as a comment.
+            Respond to this GitHub issue. Your response should be ready to post as a comment. Don't respond with anything other than the comment text.
 
             AUTHOR: ${{ github.event.issue.user.login }}
             TITLE: ${{ github.event.issue.title }}
