@@ -1,9 +1,9 @@
 name: Ask AI
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -15,7 +15,11 @@ jobs:
     name: Test Action with Prompt
     runs-on: ubuntu-latest
     steps:
-      - name: Ask AI
-        uses: FidelusAleksander/ask-ai@v1
+      - uses: actions/checkout@v4
+        with:
+          repository: FidelusAleksander/ask-ai
+          ref: v1
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: ./
         with:
           prompt: "What is the meaning of life?"
