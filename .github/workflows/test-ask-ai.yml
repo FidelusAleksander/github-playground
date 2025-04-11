@@ -1,0 +1,21 @@
+name: Ask AI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  models: read
+
+jobs:
+  test-action-prompt:
+    name: Test Action with Prompt
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask AI
+        uses: FidelusAleksander/ask-ai@v1
+        with:
+          prompt: "What is the meaning of life?"
