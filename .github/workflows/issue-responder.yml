@@ -28,11 +28,12 @@ jobs:
             TITLE: ${{ github.event.issue.title }}
             DESCRIPTION: ${{ github.event.issue.body }}
 
-            - Thank the user for their issue
-            - For bug reports: request any missing information (reproduction steps, expected/actual behavior, environment)
-            - For feature requests: acknowledge the idea and ask for use cases if not provided
-            - Sign as "AI Assistant"
-            - Use a friendly, appreciative tone
+            Follow these guidelines:
+            1. Thank the user for opening the issue
+            2. Determine the issue type:
+                - If it's a bug report, ask for any missing information (steps to reproduce, expected vs actual behavior, environment details)
+                - If it's a feature request, acknowledge the idea's value and ask for use cases if none were provided
+            3. Sign of as "AI Assistant"
 
       - name: Comment on issue
         uses: peter-evans/create-or-update-comment@v3
