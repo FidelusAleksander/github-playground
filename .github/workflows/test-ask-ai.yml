@@ -19,7 +19,7 @@ jobs:
         with:
           repository: FidelusAleksander/ask-ai
           ref: v1
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
       - uses: ./
         with:
           prompt: "What is the meaning of life?"
