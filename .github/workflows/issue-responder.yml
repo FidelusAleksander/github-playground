@@ -1,7 +1,7 @@
 name: AI Issue Responder
 on:
   issues:
-    types: [opened]
+    types: [opened, edited, reopened, closed]
 
 permissions:
   issues: write
@@ -22,7 +22,10 @@ jobs:
         uses: ./
         with:
           prompt: |
-            As a helpful repository assistant, craft a detailed response to the following GitHub issue:
+            As a helpful repository assistant, craft a detailed response to the following GitHub issue.
+            Follow GitHub markdown formatting, ensure the response is ready to be posted as a comment, without any placeholders or editing needed.
+
+            AUTHOR: ${{ github.event.issue.user.login }}
 
             TITLE: ${{ github.event.issue.title }}
 
@@ -33,8 +36,9 @@ jobs:
             1. Thank the user for opening the issue
             2. If it's a bug report, ask for any missing information (steps to reproduce, expected vs actual behavior, environment details)
             3. If it's a feature request, acknowledge the idea's value and ask for use cases if none were provided
+            4. Sign of as "AI Assistant"
 
-            Keep your tone friendly and appreciative. Format your response in markdown.
+            Keep your tone friendly and appreciative.
 
       - name: Comment on issue
         uses: peter-evans/create-or-update-comment@v3
