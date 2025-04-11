@@ -22,23 +22,17 @@ jobs:
         uses: ./
         with:
           prompt: |
-            As a helpful repository assistant, craft a detailed response to the following GitHub issue.
-            Follow GitHub markdown formatting, ensure the response is ready to be posted as a comment, without any placeholders or editing needed.
+            Respond to this GitHub issue. Your response should be ready to post as a comment.
 
             AUTHOR: ${{ github.event.issue.user.login }}
-
             TITLE: ${{ github.event.issue.title }}
+            DESCRIPTION: ${{ github.event.issue.body }}
 
-            DESCRIPTION:
-            ${{ github.event.issue.body }}
-
-            Follow these guidelines:
-            1. Thank the user for opening the issue
-            2. If it's a bug report, ask for any missing information (steps to reproduce, expected vs actual behavior, environment details)
-            3. If it's a feature request, acknowledge the idea's value and ask for use cases if none were provided
-            4. Sign of as "AI Assistant"
-
-            Keep your tone friendly and appreciative.
+            - Thank the user for their issue
+            - For bug reports: request any missing information (reproduction steps, expected/actual behavior, environment)
+            - For feature requests: acknowledge the idea and ask for use cases if not provided
+            - Sign as "AI Assistant"
+            - Use a friendly, appreciative tone
 
       - name: Comment on issue
         uses: peter-evans/create-or-update-comment@v3
