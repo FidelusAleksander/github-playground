@@ -1,0 +1,47 @@
+name: AI Issue Responder
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  respond-to-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: FidelusAleksander/ask-ai
+          ref: v1
+          token: ${{ secrets.PAT }}
+
+      - name: Generate AI response
+        id: ai-response
+        uses: ./
+        with:
+          prompt: |
+            As a helpful repository assistant, craft a detailed response to the following GitHub issue:
+
+            TITLE: ${{ github.event.issue.title }}
+
+            DESCRIPTION:
+            ${{ github.event.issue.body }}
+
+            Follow these guidelines:
+            1. Thank the user for opening the issue
+            2. If it's a bug report, ask for any missing information (steps to reproduce, expected vs actual behavior, environment details)
+            3. If it's a feature request, acknowledge the idea's value and ask for use cases if none were provided
+
+            Keep your tone friendly and appreciative. Format your response in markdown.
+
+      - name: Comment on issue
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            ## 👋 Hello there!
+
+            ${{ steps.ai-response.outputs.text }}
+
+            _This is an automated response from our AI assistant. A human maintainer will review your issue soon._
