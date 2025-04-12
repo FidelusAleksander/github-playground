@@ -58,7 +58,7 @@ jobs:
           custom-instructions: "Keep technical terms in English. Don't translate code blocks"
 
       - name: Save translation
-        run: echo "${{ env.TRANSLATED_TEXT }}" > docs/${{ matrix.file }}
+        run: echo "$TRANSLATED_TEXT" > docs/${{ matrix.file }}
         env:
           TRANSLATED_TEXT: ${{ steps.translate.outputs.translated-text }}
 
