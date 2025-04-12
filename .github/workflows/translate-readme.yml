@@ -62,7 +62,9 @@ jobs:
           custom-instructions: "Keep technical terms in English. Don't translate code blocks"
 
       - name: Save translation
-        run: echo "${{ steps.translate.outputs.translated-text }}" > docs/${{ matrix.file }}
+        run: echo "${{ env.TRANSLATED_TEXT }}" > docs/${{ matrix.file }}
+        env:
+          TRANSLATED_TEXT: ${{ steps.translate.outputs.translated-text }}
 
       - name: Commit translation
         uses: EndBug/add-and-commit@v9
