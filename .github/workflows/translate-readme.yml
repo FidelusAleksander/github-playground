@@ -28,12 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        language: ["spanish", "chinese", "polish"]
+        language: ["polish"]
         include:
-          - language: "spanish"
-            file: "README.es.md"
-          - language: "chinese"
-            file: "README.zh.md"
           - language: "polish"
             file: "README.pl.md"
 
@@ -58,7 +54,9 @@ jobs:
           custom-instructions: "Keep technical terms in English. Don't translate code blocks"
 
       - name: Save translation
-        run: echo "$TRANSLATED_TEXT" > docs/${{ matrix.file }}
+        run: |
+          mkdir -p docs
+          echo "$TRANSLATED_TEXT" | tee docs/${{ matrix.file }}
         env:
           TRANSLATED_TEXT: ${{ steps.translate.outputs.translated-text }}
 
