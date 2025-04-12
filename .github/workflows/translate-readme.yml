@@ -38,6 +38,7 @@ jobs:
           repository: FidelusAleksander/ai-translate
           path: ai-translate
           ref: v1
+          token: ${{ secrets.PAT }}
 
       - name: Translate README
         uses: ./ai-translate
