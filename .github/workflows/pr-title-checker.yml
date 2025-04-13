@@ -17,8 +17,8 @@ jobs:
           ref: main
           token: ${{ secrets.PAT }}
 
-      - name: Generate AI response
-        id: ai-response
+      - name: Prompt
+        id: prompt
         uses: ./
         with:
           prompt: |
@@ -29,5 +29,6 @@ jobs:
       - name: Update PR Title
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_TITLE: ${{ steps.prompt.outputs.text }}
         run: |
-          gh pr edit ${{ github.event.pull_request.number }} --title "${{ steps.ai-response.outputs.text }}" --repo ${{ github.repository }}
+          gh pr edit ${{ github.event.pull_request.number }} --title "$PR_TITLE" --repo ${{ github.repository }}
