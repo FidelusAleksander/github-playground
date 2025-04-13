@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.file }}
-          path: translations/${{ matrix.file }}
+          path: docs/${{ matrix.file }}
 
   create-pr:
     needs: translate
@@ -48,11 +48,11 @@ jobs:
 
       - uses: actions/download-artifact@v4
         with:
-          path: translations
+          path: docs
           merge-multiple: true
 
       - name: Display structure of downloaded files
-        run: ls -R translations
+        run: ls -R docs
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
