@@ -5,7 +5,7 @@
 [![es](https://img.shields.io/badge/lang-es-yellow.svg)](docs/README.es.md)  
 [![zh](https://img.shields.io/badge/lang-zh-blue.svg)](docs/README.zh.md)  
 
-Este repositorio sirve como un terreno de pruebas para diversas características e integraciones de GitHub. Contiene diferentes componentes para experimentar con las capacidades de GitHub, características de seguridad y flujos de trabajo de desarrollo.
+Este repositorio sirve como un terreno de pruebas para diversas características  e integraciones de GitHub. Contiene diferentes componentes para experimentar con las capacidades de GitHub, características de seguridad y flujos de trabajo de desarrollo.
 
 ## Estructura del Repositorio
 
