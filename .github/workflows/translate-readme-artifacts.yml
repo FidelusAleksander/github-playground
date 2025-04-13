@@ -32,7 +32,7 @@ jobs:
           mkdir -p docs
           echo "$TRANSLATED_TEXT" | tee docs/${{ matrix.file }}
         env:
-          TRANSLATED_TEXT: ${{ matrix.file }}
+          TRANSLATED_TEXT: ${{ matrix.language }}
 
       - name: Upload translation artifact
         uses: actions/upload-artifact@v4
