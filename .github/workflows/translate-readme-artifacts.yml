@@ -2,10 +2,8 @@ name: Translate README with Artifacts
 
 on:
   push:
-  workflow_dispatch:
-
-env:
-  BRANCH_NAME: docs/update-readme-translations
+    paths:
+      - "README.md"
 
 permissions:
   contents: write
@@ -17,12 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        language: ["polish", "spanish"]
+        language: ["polish", "spanish", "chinese"]
         include:
           - language: "polish"
             file: "README.pl.md"
           - language: "spanish"
             file: "README.es.md"
+          - language: "chinese"
+            file: "README.zh.md"
 
     steps:
       - uses: actions/checkout@v4
@@ -75,7 +75,7 @@ jobs:
             This PR updates all translations of the README:
 
             Changes were automatically generated using the AI Translate action.
-          branch: ${{ env.BRANCH_NAME }}
+          branch: docs/update-readme-translations
           add-paths: "docs/README*"
           delete-branch: true
           labels: |

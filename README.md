@@ -1,5 +1,10 @@
 # GitHub Playground
 
+[![en](https://img.shields.io/badge/lang-en-red.svg)](README.md)
+[![pl](https://img.shields.io/badge/lang-pl-green.svg)](docs/README.pl.md)
+[![es](https://img.shields.io/badge/lang-es-yellow.svg)](docs/README.es.md)
+[![zh](https://img.shields.io/badge/lang-zh-blue.svg)](docs/README.zh.md)
+
 This repository serves as a testing ground for various GitHub features and integrations. It contains different components to experiment with GitHub's capabilities, security features, and development workflows.
 
 ## Repository Structure
