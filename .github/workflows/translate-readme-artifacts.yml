@@ -50,6 +50,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: docs
+      - name: Echo all translation artifacts
+        run: |
+          ls -la docs
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
@@ -61,8 +64,7 @@ jobs:
 
             Changes were automatically generated using the AI Translate action.
           branch: ${{ env.BRANCH_NAME }}
-          path:
-            docs/README*
+          add-paths: "docs/README*"
           delete-branch: true
           labels: |
             documentation
