@@ -27,12 +27,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Save test translation
+      - uses: actions/checkout@v4
+        with:
+          repository: FidelusAleksander/ai-translate
+          path: ai-translate
+          ref: v1
+          token: ${{ secrets.PAT }}
+
+      - name: Translate README
+        uses: ./ai-translate
+        id: translate
+        with:
+          text-file: "README.md"
+          target-language: ${{ matrix.language }}
+          custom-instructions: "Keep technical terms in English. Don't translate code blocks"
+
+      - name: Save translation
         run: |
           mkdir -p docs
           echo "$TRANSLATED_TEXT" | tee docs/${{ matrix.file }}
         env:
-          TRANSLATED_TEXT: ${{ matrix.language }}
+          TRANSLATED_TEXT: ${{ steps.translate.outputs.translated-text }}
 
       - name: Upload translation artifact
         uses: actions/upload-artifact@v4
@@ -50,9 +65,6 @@ jobs:
         with:
           path: docs
           merge-multiple: true
-
-      - name: Display structure of downloaded files
-        run: ls -R docs
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
