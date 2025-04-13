@@ -51,13 +51,6 @@ jobs:
         with:
           path: docs
 
-      - name: Commit translation
-        uses: EndBug/add-and-commit@v9
-        with:
-          add: "docs/"
-          message: "docs: update README translations"
-          default_author: github_actions
-
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
