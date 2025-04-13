@@ -30,4 +30,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr edit ${{ github.event.pull_request.number }} --title "${{ steps.ai-response.outputs.text }}"
+          gh pr edit ${{ github.event.pull_request.number }} --title "${{ steps.ai-response.outputs.text }}" --repo ${{ github.repository }}
