@@ -30,12 +30,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_TITLE: ${{ steps.prompt.outputs.text }}
-
-        run: gh pr comment ${{ github.event.pull_request.number }} --body "$PR_TITLE" --repo ${{ github.repository }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.html_url }} \
+            --body "## Suggested PR Title Update\n${{ env.PR_TITLE }}"
 
       - name: Update PR Title
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_TITLE: ${{ steps.prompt.outputs.text }}
         run: |
-          gh pr edit ${{ github.event.pull_request.number }} --title "$PR_TITLE" --repo ${{ github.repository }}
+          gh pr edit ${{ github.event.pull_request.html_url }} --title "${{ env.PR_TITLE }}"
