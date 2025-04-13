@@ -29,8 +29,8 @@ jobs:
 
       - name: Save test translation
         run: |
-          mkdir -p translations
-          echo "$TRANSLATED_TEXT" | tee translations/${{ matrix.file }}
+          mkdir -p docs
+          echo "$TRANSLATED_TEXT" | tee docs/${{ matrix.file }}
         env:
           TRANSLATED_TEXT: ${{ matrix.language }}
 
@@ -64,7 +64,7 @@ jobs:
 
             Changes were automatically generated using the AI Translate action.
           branch: ${{ env.BRANCH_NAME }}
-          add-paths: "translations/README*"
+          add-paths: "docs/README*"
           delete-branch: true
           labels: |
             documentation
