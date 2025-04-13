@@ -1,4 +1,4 @@
-name: Translate README
+name: Translate README with Artifacts
 
 on:
   push:
