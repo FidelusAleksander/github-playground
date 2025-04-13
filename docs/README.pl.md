@@ -1,59 +1,49 @@
 # GitHub Playground
 
-To repozytorium służy jako poligon testowy dla różnych funkcji i integracji GitHub. Zawiera różne komponenty do eksperymentowania z możliwościami GitHub, funkcjami bezpieczeństwa oraz przepływami pracy związanymi z rozwojem oprogramowania.
+[![en](https://img.shields.io/badge/lang-en-red.svg)](README.md)  
+[![pl](https://img.shields.io/badge/lang-pl-green.svg)](docs/README.pl.md)  
+[![es](https://img.shields.io/badge/lang-es-yellow.svg)](docs/README.es.md)  
+[![zh](https://img.shields.io/badge/lang-zh-blue.svg)](docs/README.zh.md)
+
+To repozytorium służy jako pole testowe dla różnych funkcji i integracji GitHub. Zawiera różne komponenty do eksperymentowania z możliwościami GitHub, funkcjami bezpieczeństwa oraz przepływami pracy programistycznej.
 
 ## Struktura Repozytorium
 
 ```
 .
 ├── backend/          # Skrypty backendowe w Pythonie
-├── codeql/           # Konfiguracja do analizy bezpieczeństwa przy użyciu CodeQL
+├── codeql/           # Konfiguracja analizy bezpieczeństwa CodeQL
 ├── docs/             # Pliki dokumentacji
 ├── infra/            # Konfiguracja infrastruktury
 ├── queries/          # Niestandardowe zapytania CodeQL
-└── src/              # Główne katalog źródłowy
+└── src/              # Katalog z kodem źródłowym
 ```
 
-## Komponenty
+## Rozpoczęcie pracy
 
-### Backend
-- Skrypty backendowe oparte na Pythonie
-- Zarządzanie wymaganiami za pomocą pliku `requirements.txt`
-
-### Bezpieczeństwo
-- Integracja CodeQL do analizy bezpieczeństwa
-- Niestandardowe zapytania związane z bezpieczeństwem
-- Dokumentacja polityki bezpieczeństwa
-
-### Infrastruktura
-- Zarządzanie konfiguracją w formacie JSON
-- Szablony do konfiguracji infrastruktury
-
-## Jak Zacząć
-
-1. Sklonuj repozytorium:
+1. Sklonuj repozytorium:  
 ```bash
 git clone https://github.com/[username]/github-playground.git
 ```
 
-2. W przypadku backendu Python:
+2. Dla backendu w Pythonie:  
 ```bash
 cd backend
 pip install -r requirements.txt
 ```
 
-## Funkcje Testowane
+## Testowane funkcje
 
-- Przepływy pracy z GitHub Actions
-- Skanowanie bezpieczeństwa przy użyciu CodeQL
-- Konfiguracje infrastruktury
-- Niestandardowe zapytania bezpieczeństwa
-- Przepływy pracy związane z dokumentacją
+- Przepływy pracy GitHub Actions  
+- Skanowanie bezpieczeństwa CodeQL  
+- Konfiguracje infrastruktury  
+- Niestandardowe zapytania bezpieczeństwa  
+- Przepływy pracy dokumentacyjne  
 
-## Przykłady Kodów
+## Przykłady kodu
 
-### Backend Python
-Przykład skryptu w Pythonie, który demonstruje wykonywanie poleceń (z potencjalnymi implikacjami związanymi z bezpieczeństwem):
+### Backend w Pythonie  
+Przykładowy skrypt w Pythonie, który demonstruje wykonanie komendy (z potencjalnymi implikacjami bezpieczeństwa):
 
 ```python
 # backend/main.py
@@ -66,8 +56,8 @@ user_input = input("Enter a command to execute: ")
 execute_command(user_input)
 ```
 
-### Analiza Bezpieczeństwa z CodeQL
-Przykład konfiguracji CodeQL:
+### Analiza bezpieczeństwa CodeQL  
+Przykładowa konfiguracja CodeQL:
 
 ```yaml
 # codeql/codeql-config.yml
@@ -81,8 +71,8 @@ paths-ignore:
 disable-default-queries: true
 ```
 
-### Proste Funkcje w Pythonie
-Przykład podstawowej funkcji w Pythonie z różnymi wariantami typów:
+### Proste funkcje Pythona  
+Przykład podstawowej funkcji w Pythonie z wariacjami typów:
 
 ```python
 # backend/script.py
@@ -94,20 +84,20 @@ def func(x):
     return "y"
 ```
 
-Te przykłady demonstrują:
-- Wzorce wykonywania poleceń (potencjalne ryzyko bezpieczeństwa)
-- Konfigurację do skanowania bezpieczeństwa w CodeQL
-- Podstawowe implementacje funkcji w Pythonie
-- Obsługę typów oraz przepływ kontroli
+Te przykłady demonstrują:  
+- Wzorce wykonania komend (potencjalne ryzyko bezpieczeństwa)  
+- Konfigurację skanowania bezpieczeństwa CodeQL  
+- Podstawowe implementacje funkcji w Pythonie  
+- Obsługę typów i kontrolę przepływu  
 
 ## Bezpieczeństwo
 
-Zobacz [SECURITY.md](SECURITY.md) w celu uzyskania informacji o politykach i procedurach bezpieczeństwa.
+Zobacz [SECURITY.md](SECURITY.md) w celu zapoznania się z polityką i procedurami bezpieczeństwa.
 
 ## Licencja
 
-Ten projekt jest przeznaczony do celów testowych. Szczegóły licencji znajdują się w repozytorium.
+Ten projekt jest przeznaczony do celów testowych. Zobacz licencję repozytorium, aby uzyskać szczegóły.
 
-## Współtworzenie
+## Współpraca
 
-To jest osobiste repozytorium testowe. Możesz swobodnie forknąć i eksperymentować na własne potrzeby!
+To osobiste repozytorium testowe. Śmiało możesz je rozwidlać i eksperymentować na własną rękę!  
