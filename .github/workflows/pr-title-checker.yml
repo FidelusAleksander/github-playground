@@ -1,0 +1,38 @@
+name: Check PR Title
+on:
+  pull_request:
+    types: [opened]
+
+permissions:
+  models: read
+  pull-requests: write
+
+jobs:
+  respond-to-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: FidelusAleksander/prompt
+          ref: v1
+          token: ${{ secrets.PAT }}
+
+      - name: Generate AI response
+        id: ai-response
+        uses: ./
+        with:
+          prompt: |
+            Modify this PR title to match conventional commit styling:
+
+            ${{ github.event.pull_request.title }}
+
+      - name: Update PR Title
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.name,
+              pull_number: context.issue.number,
+              title: '${{ steps.ai-response.outputs.text }}'
+            });
