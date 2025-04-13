@@ -4,7 +4,6 @@ on:
     types: [opened]
 
 permissions:
-  models: read
   pull-requests: write
 
 jobs:
@@ -27,12 +26,7 @@ jobs:
             ${{ github.event.pull_request.title }}
 
       - name: Update PR Title
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.pulls.update({
-              owner: context.repo.owner,
-              repo: context.repo.name,
-              pull_number: context.issue.number,
-              title: '${{ steps.ai-response.outputs.text }}'
-            });
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr edit ${{ github.event.pull_request.number }} --title "${{ steps.ai-response.outputs.text }}"
