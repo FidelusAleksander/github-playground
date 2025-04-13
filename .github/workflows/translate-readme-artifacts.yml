@@ -37,7 +37,7 @@ jobs:
       - name: Upload translation artifact
         uses: actions/upload-artifact@v4
         with:
-          name: translations
+          name: ${{ matrix.file }}
           path: translations/${{ matrix.file }}
 
   create-pr:
