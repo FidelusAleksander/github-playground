@@ -15,21 +15,6 @@ This repository serves as a testing ground for various GitHub features and integ
 └── src/             # Source code directory
 ```
 
-## Components
-
-### Backend
-- Python-based backend scripts
-- Requirements management via `requirements.txt`
-
-### Security
-- CodeQL integration for security analysis
-- Custom security queries
-- Security policy documentation
-
-### Infrastructure
-- Configuration management via JSON
-- Infrastructure setup templates
-
 ## Getting Started
 
 1. Clone the repository:
