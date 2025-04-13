@@ -1,0 +1,75 @@
+name: Translate README
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  BRANCH_NAME: docs/update-readme-translations
+
+permissions:
+  contents: write
+  pull-requests: write
+  models: read
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: ["polish", "spanish"]
+        include:
+          - language: "polish"
+            file: "README.pl.md"
+          - language: "spanish"
+            file: "README.es.md"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Save test translation
+        run: |
+          mkdir -p docs
+          echo "$TRANSLATED_TEXT" | tee docs/${{ matrix.file }}
+        env:
+          TRANSLATED_TEXT: ${{ matrix.language }}
+
+      - name: Upload translation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: translation-${{ matrix.language }}
+          path: docs/${{ matrix.file }}
+
+  create-pr:
+    needs: translate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all translation artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: docs
+
+      - name: Commit translation
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: "docs/"
+          message: "docs: update README translations"
+          default_author: github_actions
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "docs: update translations of README"
+          title: "docs: update translations of README"
+          body: |
+            This PR updates all translations of the README:
+
+            Changes were automatically generated using the AI Translate action.
+          branch: ${{ env.BRANCH_NAME }}
+          path:
+            docs/README*
+          delete-branch: true
+          labels: |
+            documentation
