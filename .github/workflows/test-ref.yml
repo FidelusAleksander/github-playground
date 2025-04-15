@@ -25,7 +25,7 @@ jobs:
           GITHUB_EVENT: ${{ toJson(github.event) }}
         run: echo "$GITHUB_EVENT"
       - name: Overwrite README
-        run: echo "123" > README.md
+        run: echo "terraform" > README.md
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
@@ -46,7 +46,7 @@ jobs:
           GITHUB_EVENT: ${{ toJson(github.event) }}
         run: echo "$GITHUB_EVENT"
       - name: Overwrite README
-        run: echo "321" > README.md
+        run: echo "release" > README.md
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
