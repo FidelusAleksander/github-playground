@@ -1,0 +1,38 @@
+name: Translate
+run-name: Translate ${{ inputs.file }} to ${{ inputs.language }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: 'Which file to translate?'
+        required: false
+        default: 'README.md'
+        type: string
+      language:
+        description: 'What language you want to transfer to?'
+        required: false
+        default: 'portuguese'
+        type: string
+      custom-instructions:
+        description: 'Any custom instructions you want to provide?'
+        required: false
+        default: ''
+        type: string
+
+permissions:
+  contents: read
+  models: read
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Translate ${{ inputs
+        uses: FidelusAleksander/ai-translate-action@v1
+        id: translate
+        with:
+          text-file: ${{ inputs.file }}
+          target-language: ${{ inputs.language }}
+          custom-instructions: ${{ inputs.custom-instructions }}
