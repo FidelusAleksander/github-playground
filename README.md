@@ -1,1 +1,1 @@
-release
+terraform
