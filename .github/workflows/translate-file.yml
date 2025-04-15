@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Translate ${{ inputs
+      - name: AI Translate Action
         uses: FidelusAleksander/ai-translate-action@v1
         id: translate
         with:
