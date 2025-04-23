@@ -1,0 +1,12 @@
+on:
+  branch_protection_rule:
+  
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show full context and event payload
+        run: echo "$FULL_CONTEXT"
+        env:
+          FULL_CONTEXT: ${{ toJSON(github) }}
