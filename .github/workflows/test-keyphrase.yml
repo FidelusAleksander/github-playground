@@ -1,0 +1,23 @@
+name: test-keyphrase
+
+on:
+  push:
+
+
+jobs:
+  terraform-docs:
+    runs-on: ubuntu-latest
+    needs: release
+    steps:
+      - name: Add repository content to workflow
+        uses: actions/checkout@v4
+      - name: Check for participant info in app.js
+        id: check-app-js
+        uses: skills/exercise-toolkit/actions/keyphrase-checker@minimum-occurances
+        with:
+          text-file: SECURITY.md
+          keyphrase: security
+          minimum_occurences: 2
+          case-sensitive: false
+        
+
