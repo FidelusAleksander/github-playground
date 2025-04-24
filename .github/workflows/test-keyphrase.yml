@@ -5,9 +5,8 @@ on:
 
 
 jobs:
-  terraform-docs:
+  testing:
     runs-on: ubuntu-latest
-    needs: release
     steps:
       - name: Add repository content to workflow
         uses: actions/checkout@v4
