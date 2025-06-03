@@ -61,5 +61,4 @@ jobs:
         with:
           title: Link Checker Failures (${{ matrix.repo }})
           content-filepath: ./lychee/out.md
-          assignees: |
-            FidelusAleksander
+          repository: ${{ matrix.repo }}
