@@ -27,6 +27,6 @@ jobs:
           echo "🆕 This is a new repository (less than 1 day old)!"
           
       - name: Check if repository is mature
-        if: steps.repo-age.outputs.minutes > 1576800
+        if: steps.repo-age.outputs.minutes > 525600
         run: |
-          echo "🎂 This repository is over 3 years old!"
+          echo "🎂 This repository is over 1 year old!"
