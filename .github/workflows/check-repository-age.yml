@@ -19,16 +19,14 @@ jobs:
           echo "Time elapsed: ${{ steps.repo-age.outputs.human-readable }}"
           echo ""
           echo "Detailed breakdown:"
-          echo "• Days: ${{ steps.repo-age.outputs.days }}"
-          echo "• Hours: ${{ steps.repo-age.outputs.hours }}"
           echo "• Minutes: ${{ steps.repo-age.outputs.minutes }}"
           
-      - name: Check if repository is new (less than 7 days)
-        if: steps.repo-age.outputs.days < 7
+      - name: Check if repository is new 
+        if: steps.repo-age.outputs.minutes < 60
         run: |
-          echo "🆕 This is a new repository (less than 7 days old)!"
+          echo "🆕 This is a new repository (less than 1 day old)!"
           
-      - name: Check if repository is mature (more than 365 days)
-        if: steps.repo-age.outputs.days > 7
+      - name: Check if repository is mature
+        if: steps.repo-age.outputs.minutes > 65700
         run: |
-          echo "🎂 This repository is over 7 days old!"
+          echo "🎂 This repository is over 3 years old!"
