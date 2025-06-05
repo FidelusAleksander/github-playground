@@ -1,0 +1,26 @@
+name: Step 4
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+  issues: write
+
+jobs:
+
+  start_exercise:
+    name: Start Exercise
+    uses: skills/exercise-toolkit/.github/workflows/start-exercise.yml@v0.5.0
+    with:
+      exercise-title: "Code with Codespaces"
+      intro-message: "Let's create a pre-configured environment to simplify development!"
+
+  finish_exercise:
+    name: Finish Exercise
+    needs: [start_exercise]
+    uses: skills/exercise-toolkit/.github/workflows/finish-exercise.yml@add-socials-section
+    with:
+      issue-url: ${{ needs.start-exercise.outputs.issue-url }}
+
