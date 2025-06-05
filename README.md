@@ -1,7 +1,5 @@
 
 
-<div align="center">
-
 # 🎉 Congratulations FidelusAleksander! 🎉
 
 <img src="https://octodex.github.com/images/welcometocat.png" height="200px" />
@@ -25,4 +23,4 @@
 
 *There's no better way to learn than building things!* 🚀
 
-</div>
+
