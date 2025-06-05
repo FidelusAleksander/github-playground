@@ -2,11 +2,11 @@
 
 <div align="center">
 
-# 🎉 Congratulations! 🎉
+# 🎉 Congratulations FidelusAleksander! 🎉
 
 <img src="https://octodex.github.com/images/welcometocat.png" height="200px" />
 
-#### 🌟 **FidelusAleksander**, you've successfully completed the exercise! 🌟
+### 🌟 You've successfully completed the exercise! 🌟
 
 ## 🚀 Share Your Success!
 **Show off your new skills and inspire others!**
