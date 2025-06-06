@@ -26,7 +26,7 @@ jobs:
   finish_exercise:
     name: Finish Exercise
     needs: [start_exercise]
-    uses: skills/exercise-toolkit/.github/workflows/finish-exercise.yml@add-socials-section
+    uses: skills/exercise-toolkit/.github/workflows/finish-exercise.yml@main
     with:
       issue-url: https://github.com/FidelusAleksander/github-playground/issues/76
 
